@@ -1,4 +1,3 @@
-//Prent File
 import React from "react";
 import Collapsible from "./Collapsible/Collapsible";
 
