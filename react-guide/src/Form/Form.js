@@ -1,37 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Form.css";
-function Form(props) {
+
+function Form({ sendDataToPerent }) {
+  const [hindiMark, setHindiMark] = useState("");
+  const [mathsMark, setMathsMark] = useState("");
+  const [scienceMark, setScienceMark] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    sendDataToPerent(hindiMark, mathsMark, scienceMark);
+  };
+
   return (
-    <form>
-      <div className="form">
+    <div className="form">
+      <form action="" onSubmit={handleSubmit}>
         <h1>Login Form</h1>
         <label>
           Name:
-          <input type="text" name="name" />
+          <input type="text" />
         </label>
         <br></br>
         <br></br>
         <label>
           Mark1:
-          <input type="text" name="m1" />
+          <input
+            type="number"
+            value={hindiMark}
+            onChange={(event) => setHindiMark(event.target.value)}
+            autoComplete="off"
+          />
         </label>
         <br></br>
         <br></br>
         <label>
           Mark2:
-          <input type="text" name="name" />
+          <input
+            type="number"
+            value={mathsMark}
+            onChange={(event) => setMathsMark(event.target.value)}
+            autoComplete="off"
+          />
         </label>
         <br></br>
         <br></br>
         <label>
           Mark3:
-          <input type="text" name="name" />
+          <input
+            type="number"
+            value={scienceMark}
+            onChange={(event) => setScienceMark(event.target.value)}
+            autoComplete="off"
+          />
         </label>
         <br></br>
         <br></br>
         <input type="submit" value="Submit" />
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
 export default Form;
