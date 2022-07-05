@@ -1,18 +1,14 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./Button.css";
 
-class Button extends Component() {
-  onClick() {
-    <button onClick={() => setIsOpen(!isOpen)}>
-      {isOpen ? "Collapse" : "Expand"}
-    </button>;
-  }
-  render() {
-    return (
-      <div className="button">
-        <button>Expand</button>
-      </div>
-    );
-  }
+function Button(props) {
+  return (
+    <div className="button">
+      <button onClick={() => props.setIsOpen(!props.isOpen)}>
+        {props.isOpen ? "Collapse" : "Expand"}
+      </button>
+    </div>
+  );
 }
+
 export default Button;
