@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-//import styled from "styled-components";
 import "./App.css";
+import Cockpit from "../components/Cockpit/Cockpit";
 import Persons from "../components/Persons/Persons";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log("[App.js] constructor");
+  }
   state = {
     persons: [
       { id: "asdf", name: "sanju", age: 21 },
@@ -12,7 +16,26 @@ class App extends Component {
     ],
     otherState: "some other value",
     showPersons: false,
+    showCockpit: true,
   };
+
+  static getDerivedStateFromProps(props, state) {
+    console.log("[App.js] getDerivedStateFromProps", props);
+    return state;
+  }
+
+  componentDidMount() {
+    console.log("[App.js] componentDidMount");
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("[App.js] shouldComponentUpdate");
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log("[App.js] componentDidUpdate");
+  }
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex((p) => {
@@ -45,14 +68,15 @@ class App extends Component {
   };
 
   render() {
-    const style = {
-      backgroundColor: "green",
-      color: "white",
-      font: "inherit",
-      border: "1x solid blue",
-      padding: "8px",
-      cursor: "pointer",
-    };
+    console.log("[App.js] render ");
+    // const style = {
+    //   backgroundColor: "green",
+    //   color: "white",
+    //   font: "inherit",
+    //   border: "1x solid blue",
+    //   padding: "8px",
+    //   cursor: "pointer",
+    // };
 
     let persons = null;
 
@@ -66,11 +90,11 @@ class App extends Component {
           />
         </div>
       );
-      style.backgroundColor = "red";
-      style[":hover"] = {
-        backgroundColor: "salmon",
-        color: "balck",
-      };
+      // style.backgroundColor = "red";
+      // style[":hover"] = {
+      //   backgroundColor: "salmon",
+      //   color: "balck",
+      // };
     }
 
     const classes = [];
@@ -83,9 +107,18 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Hey..I'm am React App.</h1>
+        <button
+          onClick={() => {
+            this.setState({ showCockpit: false });
+          }}
+        >
+          Remove Cockpit
+        </button>
+        {this.state.showCockpit ? (
+          <Cockpit title={this.props.appTitle} />
+        ) : null}
         <p className={classes.join(" ")}>This is really Worked!!</p>
-        <button style={style} onClick={this.togglePersonsHandler}>
+        <button className="Button" onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
         {persons}
@@ -93,4 +126,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;
