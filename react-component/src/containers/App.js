@@ -1,7 +1,7 @@
-import logo from "./logo.svg";
-import "./App.css";
 import React, { Component } from "react";
-import Person from "./Person/Person";
+//import styled from "styled-components";
+import "./App.css";
+import Persons from "../components/Persons/Persons";
 
 class App extends Component {
   state = {
@@ -59,20 +59,18 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return (
-              <Person
-                click={() => this.deletePersonHandler(index)}
-                name={person.name}
-                age={person.age}
-                key={person.id}
-                changed={(event) => this.nameChangedHandler(event, person.id)}
-              />
-            );
-          })}
+          <Persons
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangedHandler}
+          />
         </div>
       );
       style.backgroundColor = "red";
+      style[":hover"] = {
+        backgroundColor: "salmon",
+        color: "balck",
+      };
     }
 
     const classes = [];
@@ -87,7 +85,7 @@ class App extends Component {
       <div className="App">
         <h1>Hey..I'm am React App.</h1>
         <p className={classes.join(" ")}>This is really Worked!!</p>
-        <button className="button" onClick={this.togglePersonsHandler}>
+        <button style={style} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
         {persons}
@@ -95,5 +93,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
