@@ -11,15 +11,18 @@ body {
     background-color: #555;
     border-radius: 6px;
     margin-bottom: 20px;
-    padding: 10px 140px 10px 15px;
+    padding: 10px 15px;
     text-align: left;
     font-size: 22px;
     position: relative;
+    display: flex;
 }
 
-.taskBg div{
+.taskBg .text{
     display: flex;
     align-items: center;
+    width: 100%;
+    padding-right: 15px;
 }
 
 .taskNumber{
@@ -42,9 +45,21 @@ body {
     flex: 1;
 }
 .btn{
+    border: 1px solid white;
+    color: white;
+}
+.num{
     position: absolute;
     right: 10px;
     top: 7px;
-    border: 1px solid white;
     color: white;
+}
+.taskText{
+   flex: 1;
+}
+.income{
+    text-align: center;
+}
+.expense{
+    text-align: center;
 }

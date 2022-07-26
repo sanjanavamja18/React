@@ -19,6 +19,8 @@ function Stopwatch() {
       clearInterval(interval);
     };
   }, [isActive, isPaused]);
+  console.log(isActive);
+  console.log(isPaused);
   const handleStart = () => {
     setIsActive(true);
     setIsPaused(false);
