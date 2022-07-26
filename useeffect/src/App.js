@@ -1,48 +1,28 @@
-//
-// App.js
-import * as React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "./App.css";
+import Home from "./Component/Home";
+import About from "./Component/About";
+import Forms from "./Component/Forms";
 
 function App() {
   return (
-    <div>
-      <header>
-        <h1>Welcome to React Router!</h1>
-      </header>
+    <Router>
+      <div>
+        <h2>Routing of Component</h2>
+        <Link to="/home">Home</Link>
+        <br />
+        <Link to="/About">About</Link>
+        <br />
+        <Link to="/forms">Forms</Link>
+        <br />
+      </div>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
+        <Route exact path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/forms" element={<Forms />} />
       </Routes>
-    </div>
+    </Router>
   );
 }
-
-function Home() {
-  return (
-    <>
-      <main>
-        <h2>Welcome to the homepage!</h2>
-        <p>You can do this, I believe in you.</p>
-      </main>
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
-    </>
-  );
-}
-
-function About() {
-  return (
-    <>
-      <main>
-        <h2>Who are we?</h2>
-        <p>That feels like an existential question, don't you think?</p>
-      </main>
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
-    </>
-  );
-}
-
 export default App;
