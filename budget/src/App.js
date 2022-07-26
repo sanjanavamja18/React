@@ -1,12 +1,28 @@
-import Todo from "./Component/Todo";
+import { useState } from "react";
 
-function App() {
+export default function App() {
+  const [names, setNames] = useState(["Alice", "Bob"]);
+
+  const handleClick = () => {
+    setNames((current) => [...current, "Carl"]);
+  };
+
+  const handlePush = () => {
+    setNames(names.pop());
+  };
   return (
     <div>
-      <div className="font-bold">Budget</div>
-      <Todo></Todo>
+      <div>
+        <button onClick={handleClick}>Push</button>
+      </div>
+
+      {names.map((element, index) => {
+        return (
+          <div key={index}>
+            <h2>{element}</h2>
+          </div>
+        );
+      })}
     </div>
   );
 }
-
-export default App;
