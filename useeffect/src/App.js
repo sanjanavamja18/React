@@ -1,28 +1,28 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./Component/Home";
-import About from "./Component/About";
-import Forms from "./Component/Forms";
+import Security from "./Component/Security";
+import Compile from "./Component/Compile";
+import Course from "./Component/Course";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <h2>Routing of Component</h2>
-        <Link to="/home">Home</Link>
-        <br />
-        <Link to="/About">About</Link>
-        <br />
-        <Link to="/forms">Forms</Link>
-        <br />
-      </div>
-      <Routes>
-        <Route exact path="/home" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/forms" element={<Forms />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      <Router>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="courses">Courses</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/courses" element={<Course />}>
+            <Route path="Security" element={<Security />} />
+            <Route path="Compile" element={<Compile />} />
+          </Route>
+        </Routes>
+      </Router>
+    </div>
   );
 }
+
 export default App;
